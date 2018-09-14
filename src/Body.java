@@ -1,15 +1,14 @@
 
 public class Body {
 
-	private static double myXPos;
-	private static double myYPos;
-	private static double myXVel;
-	private static double myYVel;
-	private static double myMass;
-	private static String myFileName;
-	private Body bod;
+	private double myXPos;
+	private double myYPos;
+	private double myXVel;
+	private double myYVel;
+	private double myMass;
+	private String myFileName;
 	
-	public Body (double xpos, double ypos, double xvel, double yvel, double mass,String name)
+	public Body (double xpos, double ypos, double xvel, double yvel, double mass, String name)
 	{
 		myXPos = xpos;
 		myYPos = ypos;
@@ -21,9 +20,13 @@ public class Body {
 	
 	public Body (Body b)
 	{
-		bod = new Body(b);
+		myXPos = b.getX();
+		myYPos = b.getY();
+		myXVel = b.getXVel();
+		myYVel = b.getYVel();
+		myMass = b.getMass();
+		myFileName = b.getName();
 	}
-	//create a body object
 	
 	public double getX()
 	{
@@ -55,40 +58,44 @@ public class Body {
 		return myFileName;
 	}
 	
-	public static double calcDistance(Body b) {
+	public double calcDistance(Body b) {
 		return Math.sqrt(Math.pow(b.getX() - myXPos, 2) + Math.pow(b.getY() - myYPos, 2));
 	}
 	
-	public static double calcForceExertedBy(Body p)
+	public double calcForceExertedBy(Body p)
 	{
 		return 6.67 * Math.pow(10, (-11)) * myMass * p.getMass() / calcDistance(p);
 	}
 	
-	public static double calcForceExertedByX(Body p)
+	public double calcForceExertedByX(Body p)
 	{
 		return calcForceExertedBy(p) * (p.getX() - myXPos) / calcDistance(p);
 	}
 	
-	public static double calcForceExertedByY(Body p)
+	public double calcForceExertedByY(Body p)
 	{
 		return calcForceExertedBy(p) * (p.getY() - myYPos) / calcDistance(p);
 	}
 	
-	public static double calcNetForceExertedByX(Body[] bodies)
+	public double calcNetForceExertedByX(Body[] bodies)
 	{
 		double x = 0;
-		for (int i = 0; i < bodies.length; i++)
+		for (Body b : bodies)
 		{
 			if (b != this)
 			{
 				x += calcForceExertedByX(b);
 			}
+//			if (bodies[i] != (bodies[i]))
+//			{
+//				x += calcForceExertedByX(bodies[i]);
+//			}
 		}
 		return x;
 	}
 	//FIX: can't use if (b != this)
 	
-	public static double calcNetForceExertedByY(Body[] bodies)
+	public double calcNetForceExertedByY(Body[] bodies)
 	{
 		double y = 0;
 		for (Body b : bodies)
@@ -97,11 +104,15 @@ public class Body {
 			{
 				y += calcForceExertedByY(b);
 			}
+//			if (bodies[i] != (bodies[i]))
+//			{
+//				y += calcForceExertedByY(bodies[i]);
+//			}
 		}
 		return y;
 	}
 	
-	public static void update(double deltaT, double xforce, double yforce)
+	public void update(double deltaT, double xforce, double yforce)
 	{
 		double ax = xforce / myMass;
 		double ay = yforce / myMass;
@@ -115,7 +126,7 @@ public class Body {
 		myYPos = ny;
 	}
 	
-	public static void draw()
+	public void draw()
 	{
 		StdDraw.picture(myXPos, myYPos, "images/" + myFileName);
 	}
