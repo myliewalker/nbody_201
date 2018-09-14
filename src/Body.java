@@ -79,13 +79,9 @@ public class Body {
 		double x = 0;
 		for (int i = 0; i < bodies.length; i++)
 		{
-//			if (b != this)
-//			{
-//				x += calcForceExertedByX(b);
-//			}
-			if (bodies[i] != (bodies[i]))
+			if (b != this)
 			{
-				x += calcForceExertedByX(bodies[i]);
+				x += calcForceExertedByX(b);
 			}
 		}
 		return x;
@@ -97,10 +93,10 @@ public class Body {
 		double y = 0;
 		for (Body b : bodies)
 		{
-//			if (b != this)
-//			{
+			if (b != this)
+			{
 				y += calcForceExertedByY(b);
-//			}
+			}
 		}
 		return y;
 	}
