@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class NBody{
+public class NBody {
 	
 	/**
 	 * Read the specified file and return the radius
@@ -74,8 +74,9 @@ public class NBody{
 			
 			for (int i = 0; i < xforces.length; i++)
 			{
-				xforces[i] = Body.calcNetForceExertedByX(bodies);
-				yforces[i] = Body.calcNetForceExertedByY(bodies);
+				xforces[i] = bodies[i].calcNetForceExertedByX(bodies);
+				//Switched from Body.calcNetForceExertedByX(bodies)
+				yforces[i] = bodies[i].calcNetForceExertedByY(bodies);
 			}
 			
 			
@@ -83,7 +84,8 @@ public class NBody{
 			// with dt and corresponding xforces, yforces values
 			for (int i = 0; i < bodies.length; i++)
 			{
-				Body.update(dt, Body.calcForceExertedByX(bodies[i]), Body.calcForceExertedByY(bodies[i]));
+				bodies[i].update(dt, bodies[i].calcForceExertedByX(bodies[i]), bodies[i].calcForceExertedByY(bodies[i]));
+				//Switched from bodies[i].update(dt, bodies[i].calcForceExertedByX(bodies[i]), bodies[i].calcForceExertedByY(bodies[i]));
 			}
 			
 			StdDraw.picture(0,0,"images/starfield.jpg");
@@ -91,7 +93,8 @@ public class NBody{
 			// TODO: loop over all bodies and call draw on each one
 			for (int i = 0; i < bodies.length; i++)
 			{
-				Body.draw();
+				bodies[i].draw();
+				//Switched from Body.draw();
 			}
 			
 			StdDraw.show(10);
