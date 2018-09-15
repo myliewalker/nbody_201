@@ -38,15 +38,21 @@ public class NBody {
 			int nb = s.nextInt();
 			double rad = s.nextDouble();
 			Body[] bodies = new Body[nb];
+			double xPos = 0;
+			double yPos = 0;
+			double xVel = 0;
+			double yVel = 0;
+			double mass = 0;
+			String name = "";
 			for (int i = 0; i < nb; i++)
 			{
 				// bodies[i] = new Body(s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.next());
-				double xPos = s.nextDouble();
-				double yPos = s.nextDouble();
-				double xVel = s.nextDouble();
-				double yVel = s.nextDouble();
-				double mass = s.nextDouble();
-				String name = s.next();
+				xPos = s.nextDouble();
+				yPos = s.nextDouble();
+				xVel = s.nextDouble();
+				yVel = s.nextDouble();
+				mass = s.nextDouble();
+				name = s.next();
 				bodies[i] = new Body(xPos, yPos, xVel, yVel, mass, name);
 			}
 			return bodies;
