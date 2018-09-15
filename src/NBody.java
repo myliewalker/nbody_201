@@ -38,27 +38,22 @@ public class NBody {
 			int nb = s.nextInt();
 			double rad = s.nextDouble();
 			Body[] bodies = new Body[nb];
-			double xPos = 0;
-			double yPos = 0;
-			double xVel = 0;
-			double yVel = 0;
-			double mass = 0;
-			String name = "";
 			for (int i = 0; i < nb; i++)
 			{
-				// bodies[i] = new Body(s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.next());
-				xPos = s.nextDouble();
-				yPos = s.nextDouble();
-				xVel = s.nextDouble();
-				yVel = s.nextDouble();
-				mass = s.nextDouble();
-				name = s.next();
+				double xPos = s.nextDouble();
+				double yPos = s.nextDouble();
+				double xVel = s.nextDouble();
+				double yVel = s.nextDouble();
+				double mass = s.nextDouble();
+				String name = s.next();
 				bodies[i] = new Body(xPos, yPos, xVel, yVel, mass, name);
 			}
 			return bodies;
+			
 	}
 	public static void main(String[] args) throws FileNotFoundException{
-		double totalTime = 157788000.0;
+		
+		double totalTime = 1000000.0;
 		double dt = 25000.0;
 		
 		String fname= "./data/planets.txt";
@@ -69,11 +64,13 @@ public class NBody {
 		}	
 		
 		Body[] bodies = readBodies(fname);
+
 		double radius = readRadius(fname);
 		
 		StdDraw.setScale(-radius, radius);
 		StdDraw.picture(0,0,"images/starfield.jpg");
 	
+//		System.out.println("ADDED: " + bodies[0].getX());
 		for(double t = 0.0; t < totalTime; t += dt) {
 			
 			// TODO: create double arrays xforces and yforces
@@ -87,30 +84,28 @@ public class NBody {
 			
 			for (int i = 0; i < xforces.length; i++)
 			{
-				xforces[i] = bodies[i].calcNetForceExertedByX(bodies);
-				//Switched from Body.calcNetForceExertedByX(bodies)
-				yforces[i] = bodies[i].calcNetForceExertedByY(bodies);
+				xforces[i] = calcNetForceExertedByX(bodies[i], bodies);
+				yforces[i] = calcNetForceExertedByY(bodies[i], bodies);
 			}
-			
 			
 			// TODO: loop over all bodies and call update
 			// with dt and corresponding xforces, yforces values
+			
+			//ISSUE IN THIS LOOP (with forces loop)
 			for (int i = 0; i < bodies.length; i++)
 			{
-				bodies[i].update(dt, bodies[i].calcForceExertedByX(bodies[i]), bodies[i].calcForceExertedByY(bodies[i]));
-				//Switched from bodies[i].update(dt, bodies[i].calcForceExertedByX(bodies[i]), bodies[i].calcForceExertedByY(bodies[i]));
+				bodies[i].update(dt, bodies[i].calcNetForceExertedByX(bodies), bodies[i].calcNetForceExertedByY(bodies));
 			}
 			
 			StdDraw.picture(0,0,"images/starfield.jpg");
 			
 			// TODO: loop over all bodies and call draw on each one
-			for (int i = 0; i < bodies.length; i++)
-			{
-				bodies[i].draw();
-				//Switched from Body.draw();
-			}
-			
-			StdDraw.show(10);
+//			for (int i = 0; i < bodies.length; i++)
+//			{
+//				bodies[i].draw();
+//			}
+//			
+//			StdDraw.show(10);
 		}
 		
 		// prints final values after simulation
@@ -123,5 +118,16 @@ public class NBody {
 		                      bodies[i].getXVel(), bodies[i].getYVel(), 
 		                      bodies[i].getMass(), bodies[i].getName());	
 		}
+				
+	}
+
+	private static double calcNetForceExertedByX(Body body, Body[] bodies) {
+		// TODO Auto-generated method stub
+		return body.calcNetForceExertedByX(bodies);
+	}
+	
+	private static double calcNetForceExertedByY(Body body, Body[] bodies) {
+		// TODO Auto-generated method stub
+		return body.calcNetForceExertedByY(bodies);
 	}
 }
