@@ -92,7 +92,7 @@ public class NBody {
 			//ISSUE IN THIS LOOP (with forces loop)
 			for (int i = 0; i < bodies.length; i++)
 			{
-				bodies[i].update(dt, bodies[i].calcNetForceExertedByX(bodies), bodies[i].calcNetForceExertedByY(bodies));
+				bodies[i].update(dt, xforces[i], yforces[i]);
 			}
 			
 			StdDraw.picture(0,0,"images/starfield.jpg");
