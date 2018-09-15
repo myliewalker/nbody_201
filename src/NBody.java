@@ -100,12 +100,12 @@ public class NBody {
 			StdDraw.picture(0,0,"images/starfield.jpg");
 			
 			// TODO: loop over all bodies and call draw on each one
-//			for (int i = 0; i < bodies.length; i++)
-//			{
-//				bodies[i].draw();
-//			}
-//			
-//			StdDraw.show(10);
+			for (int i = 0; i < bodies.length; i++)
+			{
+				bodies[i].draw();
+			}
+			
+			StdDraw.show(10);
 		}
 		
 		// prints final values after simulation
