@@ -6,13 +6,35 @@ Copy/paste the output of your simulation when using planets.txt,
 running the simulation for 1,000,000 (one  million) seconds, and
 with a time-step/dt value of 25,000
 
-(replace with copy/paste)
+Checking readBodies...
+XVALUES: 1.496E11
+YVALUES: 0.0
+XVALUES: 2.279E11
+YVALUES: 0.0
+XVALUES: 5.79E10
+YVALUES: 0.0
+XVALUES: 0.0
+YVALUES: 0.0
+XVALUES: 1.082E11
+YVALUES: 0.0
+PASS: readBodies(); Congrats! This was the hardest test!
 
 Copy/paste the output of your simulation when using planets.txt,
 running the simulation for 2,000,000 (one  million) seconds, and
 with a time-step/dt value of 25,000
 
-(replace with copy/paste)
+Checking readBodies...
+XVALUES: 1.496E11
+YVALUES: 0.0
+XVALUES: 2.279E11
+YVALUES: 0.0
+XVALUES: 5.79E10
+YVALUES: 0.0
+XVALUES: 0.0
+YVALUES: 0.0
+XVALUES: 1.082E11
+YVALUES: 0.0
+PASS: readBodies(); Congrats! This was the hardest test!
 
 Run the simulation for a billion seconds (10^9) and a time-step/dt
 of a million. You should see behavior inconsistent with what is
