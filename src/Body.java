@@ -79,21 +79,16 @@ public class Body {
 	
 	public double calcNetForceExertedByX(Body[] bodies)
 	{
-		double x = 0;
+		double netForce = 0;
 		for (Body b : bodies)
 		{
 			if (b != this)
 			{
-				x += calcForceExertedByX(b);
+				netForce += calcForceExertedByX(b);
 			}
-//			if (bodies[i] != (bodies[i]))
-//			{
-//				x += calcForceExertedByX(bodies[i]);
-//			}
 		}
-		return x;
+		return netForce;
 	}
-	//FIX: can't use if (b != this)
 	
 	public double calcNetForceExertedByY(Body[] bodies)
 	{
@@ -104,10 +99,6 @@ public class Body {
 			{
 				y += calcForceExertedByY(b);
 			}
-//			if (bodies[i] != (bodies[i]))
-//			{
-//				y += calcForceExertedByY(bodies[i]);
-//			}
 		}
 		return y;
 	}

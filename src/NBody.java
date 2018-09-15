@@ -64,13 +64,11 @@ public class NBody {
 		}	
 		
 		Body[] bodies = readBodies(fname);
-
 		double radius = readRadius(fname);
 		
 		StdDraw.setScale(-radius, radius);
 		StdDraw.picture(0,0,"images/starfield.jpg");
 	
-//		System.out.println("ADDED: " + bodies[0].getX());
 		for(double t = 0.0; t < totalTime; t += dt) {
 			
 			// TODO: create double arrays xforces and yforces
@@ -122,12 +120,10 @@ public class NBody {
 	}
 
 	private static double calcNetForceExertedByX(Body body, Body[] bodies) {
-		// TODO Auto-generated method stub
 		return body.calcNetForceExertedByX(bodies);
 	}
 	
 	private static double calcNetForceExertedByY(Body body, Body[] bodies) {
-		// TODO Auto-generated method stub
 		return body.calcNetForceExertedByY(bodies);
 	}
 }
