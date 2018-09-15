@@ -38,8 +38,8 @@ public class NBody {
 			int nb = s.nextInt();
 			double rad = s.nextDouble();
 			Body[] bodies = new Body[nb];
-			for(Body b : bodies) {
-				b = new Body(s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.next());
+			for(int k=0; k < nb; k++) {
+				bodies[k] = new Body(s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.next());
 			}
 			s.close();
 			return bodies;
