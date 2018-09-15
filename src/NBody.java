@@ -48,7 +48,7 @@ public class NBody {
 				Body temp = new Body (s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.next());
 				bodies[i] = new Body(temp);
 			}
-
+			return bodies;
 	}
 	public static void main(String[] args) throws FileNotFoundException{
 		double totalTime = 157788000.0;
