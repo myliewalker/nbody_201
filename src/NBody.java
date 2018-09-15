@@ -45,8 +45,7 @@ public class NBody {
 			// return bodies;
 			for (int i = 0; i < nb; i++)
 			{
-				Body temp = new Body (s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.next());
-				bodies[i] = new Body(temp);
+				bodies[i] = new Body.Body(s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.next());
 			}
 			return bodies;
 	}
