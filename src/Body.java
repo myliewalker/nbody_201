@@ -64,7 +64,7 @@ public class Body {
 	
 	public double calcForceExertedBy(Body p)
 	{
-		return 6.67 * Math.pow(10, (-11)) * myMass * p.getMass() / calcDistance(p);
+		return 6.67 * Math.pow(10, (-11)) * myMass * p.getMass() / Math.pow(calcDistance(p), 2);
 	}
 	
 	public double calcForceExertedByX(Body p)
