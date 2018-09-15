@@ -71,13 +71,13 @@ public class NBody {
 	
 		for(double t = 0.0; t < totalTime; t += dt) {
 			
-			// TODO: create double arrays xforces and yforces
+			// Creates double arrays xforces and yforces
 			// to hold forces on each body
 			
 			double[] xforces = new double[bodies.length];
 			double[] yforces = new double[bodies.length];
 			
-			// TODO: loop over all bodies, calculate
+			// Loops over all bodies, calculates
 			// net forces and store in xforces and yforces
 			
 			for (int i = 0; i < xforces.length; i++)
@@ -86,10 +86,9 @@ public class NBody {
 				yforces[i] = calcNetForceExertedByY(bodies[i], bodies);
 			}
 			
-			// TODO: loop over all bodies and call update
+			// Loops over all bodies and calls update
 			// with dt and corresponding xforces, yforces values
 			
-			//ISSUE IN THIS LOOP (with forces loop)
 			for (int i = 0; i < bodies.length; i++)
 			{
 				bodies[i].update(dt, xforces[i], yforces[i]);
@@ -97,7 +96,7 @@ public class NBody {
 			
 			StdDraw.picture(0,0,"images/starfield.jpg");
 			
-			// TODO: loop over all bodies and call draw on each one
+			// Loop over all bodies and calls draw on each one
 			for (int i = 0; i < bodies.length; i++)
 			{
 				bodies[i].draw();
@@ -106,8 +105,7 @@ public class NBody {
 			StdDraw.show(10);
 		}
 		
-		// prints final values after simulation
-		
+		// Prints final values after simulation
 		System.out.printf("%d\n", bodies.length);
 		System.out.printf("%.2e\n", radius);
 		for (int i = 0; i < bodies.length; i++) {
@@ -119,10 +117,12 @@ public class NBody {
 				
 	}
 
+	//Calculates the x component of the net force exerted by a body
 	private static double calcNetForceExertedByX(Body body, Body[] bodies) {
 		return body.calcNetForceExertedByX(bodies);
 	}
 	
+	//Calculates the y component of the net force exerted by a body
 	private static double calcNetForceExertedByY(Body body, Body[] bodies) {
 		return body.calcNetForceExertedByY(bodies);
 	}
