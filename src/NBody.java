@@ -41,7 +41,13 @@ public class NBody {
 			for (int i = 0; i < nb; i++)
 			{
 				// bodies[i] = new Body(s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.nextDouble(), s.next());
-				bodies[i] = new Body(s.getX(), s.getY(), s.getXVel(), s.getYVel(), s.getMass(), s.getName());
+				double xPos = s.nextDouble();
+				double yPos = s.nextDouble();
+				double xVel = s.nextDouble();
+				double yVel = s.nextDouble();
+				double mass = s.nextDouble();
+				String name = s.next();
+				bodies[i] = new Body(xPos, yPos, xVel, yVel, mass, name);
 			}
 			return bodies;
 	}
